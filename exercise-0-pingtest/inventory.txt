@@ -1,0 +1,2 @@
+aclient1 ansible_host=192.168.76.102 ansible_ssh_pass=vagrant
+aclient2 ansible_host=192.168.76.103 ansible_ssh_pass=vagrant
