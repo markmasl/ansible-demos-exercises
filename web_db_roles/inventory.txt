@@ -1,0 +1,3 @@
+[db_and_web_servers]
+aclient1 ansible_connection=ssh ansible_ssh_pass=vagrant ansible_host=192.168.76.102
+aclient2 ansible_connection=ssh ansible_ssh_pass=vagrant ansible_host=192.168.76.103
