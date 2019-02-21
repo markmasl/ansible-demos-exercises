@@ -1,0 +1,2 @@
+db_and_web_server1 ansible_connection=ssh ansible_ssh_pass=vagrant ansible_host=192.168.76.102
+db_and_web_server2 ansible_connection=ssh ansible_ssh_pass=vagrant ansible_host=192.168.76.103
