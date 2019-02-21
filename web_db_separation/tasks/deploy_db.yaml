@@ -1,5 +1,5 @@
     - name: Install MySQL database
-      apt:
+      yum:
         name: "{{ item }}"
         state:  present
       with_items:
