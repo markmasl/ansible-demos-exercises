@@ -3,9 +3,9 @@
   gather_facts: no
   connection: local
   vars:
-      project: rational-lambda-233119
-      auth_kind: serviceaccount
-      service_account_file: /vagrant/rational-lambda-233119-8109e997ed2f.json
+      gcp_project: rational-lambda-233119
+      gcp_cred_kind: serviceaccount
+      gcp_cred_file: /vagrant/rational-lambda-233119-8109e997ed2f.json
       zone: "europe-north1-a"
       region: "europe-north1"
 
@@ -13,7 +13,7 @@
    - name: create a disk
      gcp_compute_disk:
          name: 'disk-instance'
-         size_gb: 5
+         size_gb: 10
          source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
          zone: "{{ zone }}"
          project: "{{ gcp_project }}"
@@ -67,17 +67,22 @@
            - https://www.googleapis.com/auth/compute
      register: instance
 
-    - name: Wait for SSH to come up
-      wait_for: host={{ instance.address }} port=22 delay=10 timeout=60
-
-    - name: Add host to groupname
-      add_host: hostname={{ instance.address }} groupname=new_instances
+   - name: Print instance variable
+     debug:
+       msg: "{{instance }}"
 
 
-- name: Manage new instances
-  hosts: new_instances
-  connection: ssh
-  sudo: True
-  roles:
-    - base_configuration
-    - production_server
+#   - name: Wait for SSH to come up
+#     wait_for: host={{ instance.address }} port=22 delay=10 timeout=60
+
+#   - name: Add host to groupname
+#     add_host: hostname={{ instance.address }} groupname=new_instances
+
+
+#- name: Manage new instances
+#  hosts: new_instances
+#  connection: ssh
+#  sudo: True
+#  roles:
+#    - base_configuration
+#    - production_server
