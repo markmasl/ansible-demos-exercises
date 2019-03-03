@@ -3,8 +3,8 @@
 gcp_project: rational-lambda-233119
 gcp_cred_kind: serviceaccount
 gcp_cred_file: /vagrant/rational-lambda-233119-8109e997ed2f.json
-zone: "europe-north1-a"
-region: "europe-north1"
+zone: "us-central1-a"
+region: "us-central1"
 instance_name: "new-instance"
 instance_address: "new-address"
 instance_disk: "new-disk"
