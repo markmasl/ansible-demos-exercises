@@ -1,0 +1,6 @@
+- name: Create new instances and apply roles
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  roles:
+    - gcp_instance

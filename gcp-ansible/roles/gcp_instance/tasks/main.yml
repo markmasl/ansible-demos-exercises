@@ -1,0 +1,5 @@
+---
+- name: Create new instances and apply roles
+- import_tasks: create_disk.yml
+- import_tasks: create_address.yml
+- import_tasks: create_instance

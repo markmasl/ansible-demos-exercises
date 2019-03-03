@@ -1,0 +1,5 @@
+---
+
+# sqlite related packages
+sqlite_packages:
+  - sqlite
