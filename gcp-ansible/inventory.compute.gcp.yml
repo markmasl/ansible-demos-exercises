@@ -1,0 +1,13 @@
+plugin: gcp_compute
+regions:
+  - us-central1
+projects:
+  - rational-lambda-233119
+# groups:
+#  web-servers: "'-web-' in name"
+#  db-servers: "'-db-' in name"
+filters:
+scopes:
+  - https://www.googleapis.com/auth/compute
+auth_kind: serviceaccount
+service_account_file: /vagrant/rational-lambda-233119-8109e997ed2f.json

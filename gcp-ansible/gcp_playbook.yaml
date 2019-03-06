@@ -1,6 +1,14 @@
-- name: Create new instances and apply roles
+- name: Create new instances
   hosts: localhost
   gather_facts: no
   connection: local
   roles:
     - gcp_instance
+
+- name: Manage new instances
+  hosts: all
+  gather_facts: no
+  connection: ssh
+  become: True
+  roles:
+    - vitalk.flaskapp
