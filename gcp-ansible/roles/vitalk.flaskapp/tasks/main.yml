@@ -1,8 +1,7 @@
 ---
 - name: Install packages required for python development
-  apt: pkg={{ item }} state=present
+  apt: pkg={{ app_packages }} state=present
   become: true
-  with_items: "{{ app_packages }}"
   tags:
     - apt
     - setup

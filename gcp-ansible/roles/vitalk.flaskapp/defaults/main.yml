@@ -42,6 +42,7 @@ app_packages:
   - python-virtualenv
   - libpq-dev
   - python-psycopg2
+  - python-pip
 
 # Install `nodejs` and required package dependencies via `npm`?
 app_requires_npm: no

@@ -47,7 +47,7 @@
          state: present
          name: test-vm
          can_ip_forward: yes
-         machine_type: n1-standard-1
+         machine_type: f1-micro
          metadata:
              serial-port-enable: 1
          disks:

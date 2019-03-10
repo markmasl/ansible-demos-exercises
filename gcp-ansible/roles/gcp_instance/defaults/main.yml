@@ -5,7 +5,7 @@ gcp_cred_kind: serviceaccount
 gcp_cred_file: /vagrant/rational-lambda-233119-8109e997ed2f.json
 zone: "us-central1-a"
 region: "us-central1"
-instance_name: "new-instance"
-instance_address: "new-address"
-instance_disk: "new-disk"
-group_name: "new-groupname"
+instance_name: "new-instance01"
+instance_address: "{{ instance_name }}"
+instance_disk: "{{ instance_name }}"
+group_name: "{{ instance_name[:-2] }}s"

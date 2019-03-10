@@ -1,0 +1,10 @@
+---
+- name: Create LB
+  gce_lb:
+    name: testlb
+    region: "{{ region }}"
+    members: ["{{ zone }}/{{ item }}"]
+    httphealthcheck_name: hc
+    httphealthcheck_port: 80
+    httphealthcheck_path: "/up"
+  with_items: "{{ instance_name }}"

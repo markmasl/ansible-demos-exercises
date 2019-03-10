@@ -1,7 +1,9 @@
 ---
-- name: Create new instances and apply roles
+- name: Create {{ instance_name }} instances
   import_tasks: create_disk.yml
-- import_tasks: create_address.yml
+- import_tasks: debug.yml
+#- import_tasks: create_address.yml
 - import_tasks: create_instance.yml
-# - import_tasks: wait_for_ssh.yml
-# - import_tasks: add_hosts.yml
+- import_tasks: create_lb.yml
+#- import_tasks: wait_for_ssh.yml
+#- import_tasks: add_hosts.yml

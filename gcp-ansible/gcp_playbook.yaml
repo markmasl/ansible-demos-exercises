@@ -2,13 +2,25 @@
   hosts: localhost
   gather_facts: no
   connection: local
+  vars:
+    instance_names:
+      - web-server01
+      - web-server02
+      - db-server01
   roles:
-    - gcp_instance
+    - { role: gcp_instance, instance_name: "{{ instance_names }}" }
 
-- name: Manage new instances
-  hosts: all
-  gather_facts: no
-  connection: ssh
-  become: True
-  roles:
-    - vitalk.flaskapp
+#- name: Manage web-servers instances
+#  hosts: web-servers
+#  gather_facts: yes
+#  connection: ssh
+#  become: True
+#  roles:
+#    - vitalk.flaskapp
+
+#- name: Manage db-servers instances
+#  hosts: db-servers
+#  connection: ssh
+#  become: True
+#  roles:
+#    - geerlingguy.mysql

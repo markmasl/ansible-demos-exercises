@@ -4,8 +4,8 @@ regions:
 projects:
   - rational-lambda-233119
 # groups:
-#  web-servers: "'-web-' in name"
-#  db-servers: "'-db-' in name"
+#  web-servers: "'web-' in name"
+#  db-servers: "'db-' in name"
 filters:
 scopes:
   - https://www.googleapis.com/auth/compute
