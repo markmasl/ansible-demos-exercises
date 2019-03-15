@@ -2,7 +2,7 @@
 # tasks file for gcp_instance
    - name: create a disk
      gcp_compute_disk:
-         name: "{{ item }}-disk"
+         name: "{{ instance_disk }}"
          size_gb: 10
          source_image: 'projects/debian-cloud/global/images/family/debian-9'
          zone: "{{ zone }}"
@@ -12,5 +12,4 @@
          scopes:
            - https://www.googleapis.com/auth/compute
          state: present
-     with_items: "{{ instance_disk }}"
      register: disk

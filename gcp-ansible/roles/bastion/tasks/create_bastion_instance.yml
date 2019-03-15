@@ -1,0 +1,11 @@
+---
+- name: include GC instance creation role
+  include_role:
+    name: gcp_instance
+    tasks_from: create_address.yml
+  include_role:
+    name: gcp_instance
+    tasks_from: create_disk.yml
+  include_role:
+    name: gcp_instance
+    tasks_from: create_instance.yml

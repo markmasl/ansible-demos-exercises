@@ -1,2 +1,6 @@
 - name: Add host to groupname
-  add_host: ansible_ssh_host={{ address.address }} hostname={{ instance.name }} groupname={{ group_name }}
+  add_host:
+    ansible_ssh_host: "{{ item.public_ip }}"
+    hostname: "{{ item.name }}"
+    groupname: "{{ group_name }}"
+  with_items: "{{ gce.instance_data }}"

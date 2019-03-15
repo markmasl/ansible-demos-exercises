@@ -1,4 +1,4 @@
 ---
    - name: Printout instance vars
      debug:
-       msg: "{{ disk }}"
+       msg: "{{ gce }}"

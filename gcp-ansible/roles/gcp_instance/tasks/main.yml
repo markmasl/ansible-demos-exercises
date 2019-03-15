@@ -1,9 +1,13 @@
 ---
-- name: Create {{ instance_name }} instances
-  import_tasks: create_disk.yml
-- import_tasks: debug.yml
-#- import_tasks: create_address.yml
-- import_tasks: create_instance.yml
-- import_tasks: create_lb.yml
-#- import_tasks: wait_for_ssh.yml
-#- import_tasks: add_hosts.yml
+- name: Create Google instances
+#  import_tasks: create_firewall.yml
+#  import_tasks: create_disk.yml
+#- import_tasks: debug.yml
+  import_tasks: create_address.yml
+- import_tasks: gce_with_IP.yml
+- import_tasks: gce_without_IP.yml
+#- import_tasks: create_instance.yml
+#- import_tasks: debug.yml
+#- import_tasks: create_lb.yml
+- import_tasks: wait_for_ssh.yml
+- import_tasks: add_hosts.yml

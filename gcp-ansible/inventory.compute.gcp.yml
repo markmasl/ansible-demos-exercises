@@ -3,9 +3,10 @@ regions:
   - us-central1
 projects:
   - rational-lambda-233119
-# groups:
-#  web-servers: "'web-' in name"
-#  db-servers: "'db-' in name"
+groups:
+  web-servers: "'web-' in name"
+  db-servers: "'db-' in name"
+  bastions: "'bastion' in name"
 filters:
 scopes:
   - https://www.googleapis.com/auth/compute

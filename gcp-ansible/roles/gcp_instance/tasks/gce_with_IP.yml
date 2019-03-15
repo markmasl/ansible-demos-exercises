@@ -1,0 +1,22 @@
+---
+  - name: Create instance with static public IP gce module
+    gce:
+        instance_names: "{{ item.0 }}"
+        zone: "{{ zone }}"
+        machine_type: f1-micro
+        image: debian-8
+        state: present
+#        disks:
+#          - name: "{{ instance_disk }}"
+#            mode: READ_WRITE
+        disk_auto_delete: true
+        external_ip: "{{ item.1 }}"
+        ip_forward: true
+        service_account_email: "{{ gcp_account_email }}"
+        credentials_file: "{{ gcp_cred_file }}"
+        project_id: "{{ gcp_project }}"
+    register: gce
+    with_together:
+      - "{{ instance_name }}"
+      - "{{ instance_address }}"
+    when: instance_address is defined

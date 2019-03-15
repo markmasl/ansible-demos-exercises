@@ -1,4 +1,4 @@
-- name: Create new instances
+- name: Create web and db instances
   hosts: localhost
   gather_facts: no
   connection: local
@@ -8,7 +8,8 @@
       - web-server02
       - db-server01
   roles:
-    - { role: gcp_instance, instance_name: "{{ instance_names }}" }
+    - role: gcp_instance
+      instance_name: "{{ instance_names }}"
 
 #- name: Manage web-servers instances
 #  hosts: web-servers

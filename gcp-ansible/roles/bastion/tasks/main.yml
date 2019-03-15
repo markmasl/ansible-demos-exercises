@@ -1,0 +1,14 @@
+---
+# tasks file for bastion
+- name: Finish installation
+  vars:
+       fw_rule_name: 'allowremoteaccesstobastion'
+       fw_protocol: tcp
+       fw_port: '22'
+       fw_target_tags: "{{ instance_name }}"
+       fw_src_range: '80.232.241.24/32'
+       fw_rule_priority: '100'
+       fw_state: present
+#  import_tasks: create_bastion_instance.yml
+  debug:
+       msg: "{{ gce }}"
