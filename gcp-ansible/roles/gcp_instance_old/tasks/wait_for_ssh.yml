@@ -1,0 +1,13 @@
+- name: indexed loop demo
+  debug:
+    msg: "{{ item.instance_data }}"
+  with_items:
+    - "{{ gce.results }}"
+
+#- name: Wait for SSH to come up
+#  wait_for:
+#    host: "{{ item.instance_data }}"
+#    port: 22
+#    delay: 10
+#    timeout: 60
+#  with_items: "{{ gce.results }}"

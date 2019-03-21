@@ -1,0 +1,12 @@
+---
+# defaults file for gcp_instance
+gcp_project: rational-lambda-233119
+gcp_cred_kind: serviceaccount
+gcp_cred_file: /vagrant/rational-lambda-233119-8109e997ed2f.json
+gcp_account_email: ansible-master@rational-lambda-233119.iam.gserviceaccount.com
+zone: "us-central1-a"
+region: "us-central1"
+instance_name: "new-instance01"
+#instance_address: "{{ instance_name }}-address"
+instance_disk: "{{ instance_name }}-disk"
+group_name: "{{ instance_name[:-2] }}s"

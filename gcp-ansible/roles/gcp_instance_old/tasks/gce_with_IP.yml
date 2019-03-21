@@ -19,4 +19,3 @@
     with_together:
       - "{{ instance_name }}"
       - "{{ instance_address }}"
-    when: instance_address is defined

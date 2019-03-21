@@ -1,0 +1,9 @@
+    - name: Configure Hosts
+      hosts: gce_instances_ips
+      become: yes
+      become_method: sudo
+      roles:
+        - my-role-one
+        - my-role-two
+      tags:
+        - config

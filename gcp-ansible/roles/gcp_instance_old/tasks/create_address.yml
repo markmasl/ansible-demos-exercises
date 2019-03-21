@@ -8,5 +8,4 @@
          service_account_file: "{{ gcp_cred_file }}"
          state: present
      with_items: "{{ instance_address }}"
-     when: instance_address is defined
      register: address

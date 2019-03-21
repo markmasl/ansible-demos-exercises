@@ -1,0 +1,7 @@
+---
+# tasks file for gcp
+- name: Create Google instances
+  import_tasks: create_instances.yml
+- import_tasks: save_host.yml
+- import_tasks: connect_to_host.yml
+#- import_tasks: configure_host.yml

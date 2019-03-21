@@ -16,7 +16,6 @@
         project_id: "{{ gcp_project }}"
     register: gce
     with_items: "{{ instance_name }}"
-    when: instance_address is not defined
 
   - name: Debug module
     debug:

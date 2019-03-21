@@ -1,0 +1,14 @@
+    - name: create multiple instances
+      # Basic provisioning example.  Create multiple Debian 8 instances in the
+      # us-central1-a Zone of n1-standard-1 machine type.
+      gce:
+        instance_names: "{{ instance_name }}"
+        zone: "{{ zone }}"
+        machine_type: f1-micro
+        image: debian-8
+        state: present
+        service_account_email: "{{ gcp_account_email }}"
+        credentials_file: "{{ gcp_cred_file }}"
+        project_id: "{{ gcp_project }}"
+        metadata : '{ "startup-script" : "apt-get update", "enable-oslogin" :	"TRUE" }'
+      register: gce

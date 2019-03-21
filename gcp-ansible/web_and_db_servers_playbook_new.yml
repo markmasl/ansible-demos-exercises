@@ -1,0 +1,12 @@
+- name: Compute Engine Instance
+  hosts: localhost
+  vars:
+    instance_name: webserver01,webserver02,dbserver01
+  roles:
+    - role: gcp
+      instance_names: "{{ instance_name }}"
+      
+- name: Install flaskapp
+  hosts: webservers
+  roles:
+    - role: vitalk.flaskapp

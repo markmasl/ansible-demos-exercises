@@ -1,0 +1,6 @@
+- name: Save host data
+  add_host:
+    ansible_ssh_host: "{{ item.public_ip }}"
+    hostname: "{{ item.name }}"
+    groupname: "{{ item.name[:-2] }}s"
+  with_items: "{{ gce.instance_data }}"

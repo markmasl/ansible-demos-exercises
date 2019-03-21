@@ -4,8 +4,14 @@
 #  import_tasks: create_disk.yml
 #- import_tasks: debug.yml
   import_tasks: create_address.yml
+  when: instance_address is defined
+
 - import_tasks: gce_with_IP.yml
-- import_tasks: gce_without_IP.yml
+  when: instance_address is defined
+
+#- import_tasks: gce_without_IP.yml
+#  when: instance_address is not defined
+
 #- import_tasks: create_instance.yml
 #- import_tasks: debug.yml
 #- import_tasks: create_lb.yml
