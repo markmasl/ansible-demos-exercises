@@ -21,10 +21,10 @@
     mode: 0644
   when: "'webservers' in group_names"
 
-- name: Copying signUp.js to static folder
+- name: Copying signUp.js to js folder
   copy:
     src: "{{ role_path }}/files/signUp.js"
-    dest: /opt/static/
+    dest: /opt/static/js/
     owner: root
     group: root
     mode: 0644
