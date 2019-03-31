@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: Andrew Rothstein
+  description: installs the python flask web framework
+  company: BlackRock
+  license:
+    - MIT
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - web
+    - rest
+    - python
+
+dependencies:
+  - role: andrewrothstein.python
+    version: v1.0.11

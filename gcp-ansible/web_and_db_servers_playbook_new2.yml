@@ -1,0 +1,32 @@
+- name: Compute Engine Instance
+  hosts: localhost
+  vars:
+    instance_name: webserver01,webserver02,dbserver01
+  roles:
+    - role: gcp
+      instance_names: "{{ instance_name }}"
+
+- name: Install python, pip and flask
+  hosts: webservers
+  roles:
+    - role: andrewrothstein.flask
+  become: true
+
+- name: Install mysql
+  hosts: dbservers
+  vars:
+    mysql_user_name: flaskapp
+    mysql_user_password: TavXQ9K7DweKeB3H
+    mysql_root_password: xGZsRLThXcQSv5NF
+  roles:
+    - role: geerlingguy.mysql
+  become: true
+
+- name: Install flaskapp
+  hosts: all
+  vars:
+    mysql_user_name: flaskapp
+    mysql_user_password: TavXQ9K7DweKeB3H
+  roles:
+    - role: flaskapp
+  become: true

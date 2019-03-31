@@ -5,8 +5,9 @@
   roles:
     - role: gcp
       instance_names: "{{ instance_name }}"
-      
+
 - name: Install flaskapp
   hosts: webservers
   roles:
     - role: vitalk.flaskapp
+  become: true

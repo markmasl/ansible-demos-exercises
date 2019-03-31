@@ -1,0 +1,75 @@
+---
+# tasks file for flaskapp
+- name: Copying files to template folder
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: /opt/templates/
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - index.html
+    - signup.html
+  when: "'webservers' in group_names"
+
+- name: Copying signup.css to css folder
+  copy:
+    src: "{{ role_path }}/files/signup.css"
+    dest: /opt/static/css/
+    owner: root
+    group: root
+    mode: 0644
+  when: "'webservers' in group_names"
+
+- name: Copying signUp.js to static folder
+  copy:
+    src: "{{ role_path }}/files/signUp.js"
+    dest: /opt/static/
+    owner: root
+    group: root
+    mode: 0644
+  when: "'webservers' in group_names"
+
+- name: Copying signup.css to static folder
+  copy:
+    src: "{{ role_path }}/files/signUp.js"
+    dest: /opt/static/
+    owner: root
+    group: root
+    mode: 0644
+  when: "'webservers' in group_names"
+
+- name: Copying app.py to opt folder
+  template:
+    src: "{{ role_path }}/templates/app.py.j2"
+    dest: /opt/app.py
+    owner: root
+    group: root
+    mode: 0644
+  when: "'webservers' in group_names"
+
+- name: Copying db config file
+  copy:
+    src: "{{ role_path }}/files/dump.sql.bz2"
+    dest: /opt/
+    owner: root
+    group: root
+    mode: 0644
+  when: "'dbservers' in group_names"
+
+- name: Create a new database with name 'BucketList'
+  mysql_db:
+    name: BucketList
+    state: present
+  when: "'dbservers' in group_names"
+
+- name: Configuring db
+  mysql_db:
+    name: BucketList
+    state: present
+    target: /opt/dump.sql.bz2
+  when: "'dbservers' in group_names"
+
+- name: Start web-application
+  shell: FLASK_APP=/opt/app.py nohup flask run --host=0.0.0.0 &
+  when: "'webservers' in group_names"

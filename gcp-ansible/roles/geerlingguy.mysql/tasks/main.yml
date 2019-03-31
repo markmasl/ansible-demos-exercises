@@ -1,4 +1,6 @@
 ---
+#Create user for flask app
+- include_tasks: create_user_and_group.yml
 # Variable configuration.
 - include_tasks: variables.yml
 

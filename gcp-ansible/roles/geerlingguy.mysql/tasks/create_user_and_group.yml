@@ -1,0 +1,10 @@
+- name: Create group for mysql db
+  group:
+    name: flaskapp
+    state: present
+
+- name: Create user for mysql db
+  user:
+    name: flaskapp
+    group: flaskapp
+    state: present

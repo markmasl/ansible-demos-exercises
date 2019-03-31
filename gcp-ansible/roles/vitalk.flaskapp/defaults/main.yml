@@ -16,7 +16,7 @@ app_requirements: "{{ app_directory }}/requirements.txt"
 
 # The remote git repository to pull application code from, for example:
 # ssh://git@github.com/vitalk/app.git
-app_repository: https://github.com/pallets/flask-website.git
+app_repository: https://github.com/mmumshad/simple-webapp.git
 
 # The version of the repository to checkout. This can be a full
 # 40-character SHA1 hash, the branch or a tag name.
@@ -32,17 +32,20 @@ app_pre_hooks: []
 app_post_hooks: []
 
 # The path to application config to use when launch application.
-app_config:
+app_config: "/home/{{ app_name }}/{{ app_name }}/flask_website"
 
 # The list of system packages required to build/run application.
 app_packages:
   - git
+  - python
+  - python-setuptools
   - build-essential
   - python-dev
   - python-virtualenv
   - libpq-dev
   - python-psycopg2
   - python-pip
+  - python-mysqldb
 
 # Install `nodejs` and required package dependencies via `npm`?
 app_requires_npm: no
