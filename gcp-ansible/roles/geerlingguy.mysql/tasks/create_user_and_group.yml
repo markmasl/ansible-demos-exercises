@@ -1,10 +1,10 @@
 - name: Create group for mysql db
   group:
-    name: flaskapp
+    name: "{{ mysql_user_name }}"
     state: present
 
 - name: Create user for mysql db
   user:
-    name: flaskapp
-    group: flaskapp
+    name: "{{ mysql_user_name }}"
+    group: "{{ mysql_user_name }}"
     state: present

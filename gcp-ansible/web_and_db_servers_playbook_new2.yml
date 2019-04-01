@@ -2,6 +2,8 @@
   hosts: localhost
   vars:
     instance_name: webserver01,webserver02,dbserver01
+    gcp_lb_name: flaskapp
+    gcp_fw_name: flaskapphttp80allow
   roles:
     - role: gcp
       instance_names: "{{ instance_name }}"
@@ -14,19 +16,18 @@
 
 - name: Install mysql
   hosts: dbservers
-  vars:
-    mysql_user_name: flaskapp
-    mysql_user_password: TavXQ9K7DweKeB3H
-    mysql_root_password: xGZsRLThXcQSv5NF
   roles:
     - role: geerlingguy.mysql
   become: true
 
-- name: Install flaskapp
-  hosts: all
-  vars:
-    mysql_user_name: flaskapp
-    mysql_user_password: TavXQ9K7DweKeB3H
+- name: Install flaskapp for dbservers
+  hosts: dbservers
+  roles:
+    - role: flaskapp
+  become: true
+
+- name: Install flaskapp for webservers
+  hosts: webservers
   roles:
     - role: flaskapp
   become: true

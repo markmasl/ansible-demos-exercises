@@ -4,4 +4,6 @@
   import_tasks: create_instances.yml
 - import_tasks: save_host.yml
 - import_tasks: connect_to_host.yml
+- import_tasks: create_lb.yml
+- import_tasks: create_fw.yml
 #- import_tasks: configure_host.yml

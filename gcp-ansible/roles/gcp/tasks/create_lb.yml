@@ -1,0 +1,13 @@
+- name: Create LB point for flask app
+  gce_lb:
+    name: "{{ gcp_lb_name }}"
+    region: "{{ region }}"
+    port_range: 80
+    members: ["{{ region }}/webserver01", "{{ region }}/webserver02"]
+    httphealthcheck_name: flaskapp-hc
+    httphealthcheck_port: 80
+    httphealthcheck_path: "/"
+    project_id: "{{ gcp_project }}"
+    credentials_file: "{{ gcp_cred_file }}"
+    service_account_email: "{{ gcp_account_email }}"
+  when: gcp_lb_name is defined

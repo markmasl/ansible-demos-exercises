@@ -1,0 +1,11 @@
+[all]
+webserver01
+webserver02
+dbserver01
+
+[webservers]
+webserver01
+webserver02
+
+[dbservers]
+dbserver01

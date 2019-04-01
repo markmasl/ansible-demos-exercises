@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['MYSQL_DATABASE_USER'] = "{{ mysql_user_name }}"
 app.config['MYSQL_DATABASE_PASSWORD'] = "{{ mysql_user_password }}"
 app.config['MYSQL_DATABASE_DB'] = 'BucketList'
-app.config['MYSQL_DATABASE_HOST'] = "{{ ansible_ssh_private_ip }}"
+app.config['MYSQL_DATABASE_HOST'] = "{{ hostvars.dbserver01.ansible_ssh_private_ip }}"
 mysql.init_app(app)
 
 
