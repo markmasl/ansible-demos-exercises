@@ -4,7 +4,7 @@ In order to run this playbook following changes where made to the ansible.cfg fi
 1. path to the inventory was changed
 inventory = ~/ansible-demos-exercises/gcp-ansible/inventory/
 2. additional paths to search for roles in
-roles_path = /etc/ansible/roles:/usr/share/ansible/roles:/~/ansible-demos-exercises/gcp-ansible/roles
+roles_path = /etc/ansible/roles:/usr/share/ansible/roles:~/ansible-demos-exercises/gcp-ansible/roles
 3. private_key_file = ~/.ssh/id_rsa
 4. vault_password_file = ~/ansible-demos-exercises/gcp-ansible/.vault_pass
 5. Additional plugins required for dynamic inventory
