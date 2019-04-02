@@ -45,26 +45,32 @@
 
 - name: Copying db config file
   copy:
-    src: "{{ role_path }}/files/dump.sql.bz2"
+    src: "{{ role_path }}/files/dump.sql"
     dest: /opt/
     owner: root
     group: root
     mode: 0644
   when: "'dbservers' in group_names"
 
-- name: Create a new database with name 'BucketList'
-  mysql_db:
-    name: BucketList
-    state: present
-  when: "'dbservers' in group_names"
+#- name: Create a new database with name 'BucketList'
+#  mysql_db:
+#    name: BucketList
+#    state: present
+#  when: "'dbservers' in group_names"
 
 - name: Configuring db
   mysql_db:
     name: BucketList
-    state: import
-    target: /opt/dump.sql.bz2
+    state: present
   when: "'dbservers' in group_names"
+  notify: import BucketList database
 
 - name: Start web-application
   shell: FLASK_APP=/opt/app.py nohup flask run --host=0.0.0.0 --port=80 &
   when: "'webservers' in group_names"
+
+- name: Send notification to slack channel
+  slack:
+    token: "{{ slack_token }}"
+    msg: '{{ inventory_hostname }} configuration completed'
+  delegate_to: localhost

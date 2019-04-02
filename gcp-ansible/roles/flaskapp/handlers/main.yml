@@ -1,2 +1,7 @@
 ---
 # handlers file for flaskapp
+- name: import BucketList database
+  mysql_db:
+    name: BucketList
+    state: import
+    target: /opt/dump.sql
